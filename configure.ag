@@ -73,7 +73,7 @@ AC_SUBST(BUILD)
 SOURCE=[`(cd $srcdir && pwd)`]
 AC_SUBST(SOURCE)
 
-R="/home/jonathan/Rbuild/bin/R"
+R="R"
 R_HOME=[`$R RHOME`]
 if test -z R_HOME; then
    echo "could not determine R_HOME"
