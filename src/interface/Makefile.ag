@@ -1,0 +1,51 @@
+# The contents of this file are subject to the MonetDB Public License
+# Version 1.1 (the "License"); you may not use this file except in
+# compliance with the License. You may obtain a copy of the License at
+# http://www.monetdb.org/Legal/MonetDBLicense
+#
+# Software distributed under the License is distributed on an "AS IS"
+# basis, WITHOUT WARRANTY OF ANY KIND, either express or implied. See the
+# License for the specific language governing rights and limitations
+# under the License.
+#
+# The Original Code is the MonetDB Database System.
+#
+# The Initial Developer of the Original Code is CWI.
+# Portions created by CWI are Copyright (C) 1997-July 2008 CWI.
+# Copyright August 2008-2013 MonetDB B.V.
+# All Rights Reserved.
+
+## Process this file with automake to produce Makefile.in
+
+INCLUDES = ../monetdb5/mal \
+	   ../monetdb5/modules/mal \
+	   ../monetdb5/modules/atoms \
+	   ../monetdb5/optimizer \
+	   ../sql/common \
+	   ../sql/include \
+	   ../sql/storage \
+	   ../sql/backends/monet5 \
+	   ../sql/server \
+	   ../common/options \
+	   ../common/stream \
+	   ../common/utils \
+	   ../common/mapilib \
+	   ../gdk \
+   	   ../Rpackage \
+	   $(R_INCLUDE_DIR)
+
+lib_R_interface = {
+	MODULE
+	DIR = libdir
+	SOURCES = \
+		Rinterface.c Rinterface.h
+	LIBS = ../monetdb5/tools/libmonetdb5 \
+	       ../gdk/libbat \
+	       ../sql/common/libsqlcommon \
+	       ../sql/storage/libstore \
+	       ../sql/storage/bat/libbatstore \
+	       ../sql/backends/monet5/lib_sql \
+	       ../Rpackage/libleaked_data \
+		$(curl_LIBS) $(pcre_LIBS) $(openssl_LIBS) $(PSAPILIB) \
+		$(SOCKET_LIBS) $(MALLOC_LIBS) $(DL_LIBS) $(PTHREAD_LIBS)
+}

@@ -1,0 +1,13 @@
+Package: monetinR
+Version: 0.1-1
+Date: 2013-05-14
+Title: Embedded MonetDB in R
+Authors@R: c(person("Jonathan", "Lajus", role = c("aut", "cre"),
+	   email = "lajus@cwi.nl"))
+Author: Jonathan Lajus
+Maintainer: Jonathan Lajus <lajus@cwi.nl>
+Description: A simple way to use data from a database
+	     without redondings.
+License: MonetDB Public License (1.1)
+URL: http://www.monetdb.org
+BugReports: http://bugs.monetdb.org/Rpkg

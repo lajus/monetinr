@@ -1,0 +1,621 @@
+ERROR: Multiple definitions of symbol 'register_tm_clones':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol '_init':
+In monetinR libraries:
+[ 'libstream.so',
+  'libstream.so',
+  'libmapi.so',
+  'libmapi.so',
+  'libbat.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_leak.so',
+  'lib_sql.so',
+  'lib_sql.so']
+In R libraries:
+[ 'digest.so',
+  'digest.so',
+  'nnet.so',
+  'rpart.so',
+  'survival.so',
+  'mgcv.so',
+  'cairo.so',
+  'grDevices.so',
+  'class.so',
+  'graphics.so',
+  'utils.so',
+  'MASS.so',
+  'grid.so',
+  'spatial.so',
+  'splines.so',
+  'lattice.so',
+  'tcltk.so',
+  'parallel.so',
+  'tools.so',
+  'nlme.so',
+  'methods.so',
+  'stats.so',
+  'foreign.so',
+  'cluster.so',
+  'KernSmooth.so',
+  'Matrix.so',
+  'libRlapack.so',
+  'libRblas.so',
+  'libR.so',
+  'internet.so',
+  'R_X11.so',
+  'R_de.so',
+  'lapack.so',
+  'vfonts.so']
+
+ERROR: Multiple definitions of symbol 'cs_add':
+In monetinR libraries:
+['lib_leak.so', 'lib_leak.so', 'lib_sql.so', 'lib_sql.so']
+In R libraries:
+['Matrix.so']
+
+ERROR: Multiple definitions of symbol '__dso_handle':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol '_edata':
+In monetinR libraries:
+[ 'libstream.so',
+  'libstream.so',
+  'libmapi.so',
+  'libmapi.so',
+  'libbat.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_leak.so',
+  'lib_sql.so',
+  'lib_sql.so']
+In R libraries:
+[ 'digest.so',
+  'digest.so',
+  'nnet.so',
+  'rpart.so',
+  'survival.so',
+  'mgcv.so',
+  'cairo.so',
+  'grDevices.so',
+  'class.so',
+  'graphics.so',
+  'utils.so',
+  'MASS.so',
+  'grid.so',
+  'spatial.so',
+  'splines.so',
+  'lattice.so',
+  'tcltk.so',
+  'parallel.so',
+  'tools.so',
+  'nlme.so',
+  'methods.so',
+  'stats.so',
+  'foreign.so',
+  'cluster.so',
+  'KernSmooth.so',
+  'Matrix.so',
+  'libRlapack.so',
+  'libRblas.so',
+  'libR.so',
+  'internet.so',
+  'R_X11.so',
+  'R_de.so',
+  'lapack.so',
+  'vfonts.so']
+
+ERROR: Multiple definitions of symbol 'print_tree':
+In monetinR libraries:
+['lib_sql.so', 'lib_sql.so']
+In R libraries:
+['rpart.so']
+
+ERROR: Multiple definitions of symbol '_fini':
+In monetinR libraries:
+[ 'libstream.so',
+  'libstream.so',
+  'libmapi.so',
+  'libmapi.so',
+  'libbat.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_leak.so',
+  'lib_sql.so',
+  'lib_sql.so']
+In R libraries:
+[ 'digest.so',
+  'digest.so',
+  'nnet.so',
+  'rpart.so',
+  'survival.so',
+  'mgcv.so',
+  'cairo.so',
+  'grDevices.so',
+  'class.so',
+  'graphics.so',
+  'utils.so',
+  'MASS.so',
+  'grid.so',
+  'spatial.so',
+  'splines.so',
+  'lattice.so',
+  'tcltk.so',
+  'parallel.so',
+  'tools.so',
+  'nlme.so',
+  'methods.so',
+  'stats.so',
+  'foreign.so',
+  'cluster.so',
+  'KernSmooth.so',
+  'Matrix.so',
+  'libRlapack.so',
+  'libRblas.so',
+  'libR.so',
+  'internet.so',
+  'R_X11.so',
+  'R_de.so',
+  'lapack.so',
+  'vfonts.so']
+
+ERROR: Multiple definitions of symbol '__FRAME_END__':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol 'parseError':
+In monetinR libraries:
+['libmonetdb5.so', 'libmonetdb5.so']
+In R libraries:
+['libR.so']
+
+ERROR: Multiple definitions of symbol '_end':
+In monetinR libraries:
+[ 'libstream.so',
+  'libstream.so',
+  'libmapi.so',
+  'libmapi.so',
+  'libbat.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_leak.so',
+  'lib_sql.so',
+  'lib_sql.so']
+In R libraries:
+[ 'digest.so',
+  'digest.so',
+  'nnet.so',
+  'rpart.so',
+  'survival.so',
+  'mgcv.so',
+  'cairo.so',
+  'grDevices.so',
+  'class.so',
+  'graphics.so',
+  'utils.so',
+  'MASS.so',
+  'grid.so',
+  'spatial.so',
+  'splines.so',
+  'lattice.so',
+  'tcltk.so',
+  'parallel.so',
+  'tools.so',
+  'nlme.so',
+  'methods.so',
+  'stats.so',
+  'foreign.so',
+  'cluster.so',
+  'KernSmooth.so',
+  'Matrix.so',
+  'libRlapack.so',
+  'libRblas.so',
+  'libR.so',
+  'internet.so',
+  'R_X11.so',
+  'R_de.so',
+  'lapack.so',
+  'vfonts.so']
+
+ERROR: Multiple definitions of symbol '__JCR_END__':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol '_DYNAMIC':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol 'frame_dummy':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol 'crtstuff.c':
+In monetinR libraries:
+[ 'libstream.so',
+  'libstream.so',
+  'libmapi.so',
+  'libmapi.so',
+  'libbat.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_leak.so',
+  'lib_sql.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so', 'digest.so']
+
+ERROR: Multiple definitions of symbol 'deregister_tm_clones':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol '__do_global_dtors_aux_fini_array_entry':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol '__frame_dummy_init_array_entry':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol 'completed.6137':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol '__JCR_LIST__':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol '__do_global_dtors_aux':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol '__TMC_END__':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+
+ERROR: Multiple definitions of symbol '__bss_start':
+In monetinR libraries:
+[ 'libstream.so',
+  'libstream.so',
+  'libmapi.so',
+  'libmapi.so',
+  'libbat.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_leak.so',
+  'lib_sql.so',
+  'lib_sql.so']
+In R libraries:
+[ 'digest.so',
+  'digest.so',
+  'nnet.so',
+  'rpart.so',
+  'survival.so',
+  'mgcv.so',
+  'cairo.so',
+  'grDevices.so',
+  'class.so',
+  'graphics.so',
+  'utils.so',
+  'MASS.so',
+  'grid.so',
+  'spatial.so',
+  'splines.so',
+  'lattice.so',
+  'tcltk.so',
+  'parallel.so',
+  'tools.so',
+  'nlme.so',
+  'methods.so',
+  'stats.so',
+  'foreign.so',
+  'cluster.so',
+  'KernSmooth.so',
+  'Matrix.so',
+  'libRlapack.so',
+  'libRblas.so',
+  'libR.so',
+  'internet.so',
+  'R_X11.so',
+  'R_de.so',
+  'lapack.so',
+  'vfonts.so']
+
+ERROR: Multiple definitions of symbol '_GLOBAL_OFFSET_TABLE_':
+In monetinR libraries:
+[ 'libstream.so',
+  'libmapi.so',
+  'libbat.so',
+  'libmonetdb5.so',
+  'lib_jaql.so',
+  'lib_json.so',
+  'lib_opt_sql_append.so',
+  'lib_fits.so',
+  'lib_vault.so',
+  'lib_udf.so',
+  'lib_lsst.so',
+  'lib_leak.so',
+  'lib_sql.so']
+In R libraries:
+['digest.so']
+

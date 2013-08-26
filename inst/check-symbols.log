@@ -1,0 +1,18 @@
+ERROR: Multiple definitions of symbol 'print_tree':
+In monetinR libraries:
+['lib_sql.so', 'lib_sql.so']
+In R libraries:
+['rpart.so']
+
+ERROR: Multiple definitions of symbol 'cs_add':
+In monetinR libraries:
+['lib_leak.so', 'lib_leak.so', 'lib_sql.so', 'lib_sql.so']
+In R libraries:
+['Matrix.so']
+
+ERROR: Multiple definitions of symbol 'parseError':
+In monetinR libraries:
+['libmonetdb5.so', 'libmonetdb5.so']
+In R libraries:
+['libR.so']
+

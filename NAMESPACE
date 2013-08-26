@@ -1,0 +1,5 @@
+## package has a dynamic library
+useDynLib(libR_interface)
+
+## and exported functions
+export(init, dummy, query, explain)
