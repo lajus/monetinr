@@ -22,6 +22,5 @@ SUBDIRS = buildtools \
 	Rpackage \
 	HAVE_SQL?sql \
 	HAVE_TESTING?testing \
-	interface \
-	tools
+	interface
 

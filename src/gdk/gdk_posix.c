@@ -380,7 +380,7 @@ MT_mmap(const char *path, int mode, size_t len)
 		ret = mmap(NULL,
 			   len+getpagesize(),
 			   PROT_READ | PROT_WRITE,
-			   MAP_ANONYMOUS | (mode & MMAP_COPY) ? (MAP_PRIVATE | MAP_NORESERVE) : MAP_SHARED),
+			   MAP_ANONYMOUS | ((mode & MMAP_COPY) ? (MAP_PRIVATE | MAP_NORESERVE) : MAP_SHARED),
 			   -1,
 			   0);
 		if(ret != (void *) -1L) {
