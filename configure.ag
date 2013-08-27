@@ -73,13 +73,12 @@ AC_SUBST(BUILD)
 SOURCE=[`(cd $srcdir && pwd)`]
 AC_SUBST(SOURCE)
 
-R="R"
-R_HOME=[`$R RHOME`]
+R_HOME="$R_HOME"
 if test -z R_HOME; then
    echo "could not determine R_HOME"
    exit 1
 fi
-R_INCLUDE_DIR=[`$R --slave --vanilla -e "cat(R.home('include'))"`]
+R_INCLUDE_DIR="$R_INCLUDE_DIR"
 if test -z R_INCLUDE_DIR; then
    echo "could not determine R_INCLUDE_DIR"
    exit 1
@@ -88,8 +87,12 @@ fi
 # Hard-coded because I'm dirty !
 LIBDIR="$R_PACKAGE_DIR/libs"
 libdir="$LIBDIR"
+PREFIX="$R_PACKAGE_DIR"
+prefix="$PREFIX"
+
 AC_DEFINE_UNQUOTED(MONETINR_MOD_PATH, ["$libdir/monetdb5:$libdir"], [Location of the monet's mal files])
 AC_SUBST(LIBDIR)
+AC_SUBST(PREFIX)
 
 #CC=`R CMD config CC`
 #CFLAGS=`R CMD config CFLAGS`
