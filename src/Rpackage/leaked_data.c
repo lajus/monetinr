@@ -19,17 +19,40 @@
 
 #include "leaked_data.h"
 //#include "sql_list.h"
+#include "monetdb_config.h"
 #include "gdk.h"
 #include "stream.h"
 
-RResultPtr leaked_data;
+RResultPtr  leaked_data;
+ChainedINT *leaked_bids;
 //int leaked_resultc;
 
 //static int max_size = 100;
 
+ChainedINT *CINT_pushValue(int val, ChainedINT *c) {
+	ChainedINT *r = (ChainedINT *) GDKmalloc(sizeof(ChainedINT));
+	r->val = val;
+	r->next = c;
+	return r;
+}
+
+ChainedINT *CINT_free(ChainedINT *c) {
+	if (c != NULL) {
+		ChainedINT *next = c->next;
+		GDKfree(c);
+		return CINT_free(next);
+	}
+	return NULL;
+}
+
+int leakedBatInUse(ChainedINT *c) {
+	return (c == NULL) ? 0 : (BBP_refs(c->val) > 0 || leakedBatInUse(c->next));
+}
+
 int
 leak_init(void)
 {
+	leaked_bids = NULL;
 	leaked_data = GDKmalloc(sizeof(RResultRec));
 	leaked_data->msg = buffer_wastream(buffer_create(GDKMAXERRLEN), "STDOUT_R_REDIRECT");
 	leaked_data->type = LD_ERROR;

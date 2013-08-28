@@ -35,8 +35,19 @@ typedef struct RRESULT {
 	stream *msg;
 } *RResultPtr, RResultRec;
 
-extern RResultPtr leaked_data;
+typedef struct CHAINEDINT {
+	int val;
+	struct CHAINEDINT *next;
+} ChainedINT;
+
+
+extern RResultPtr  leaked_data;
+extern ChainedINT* leaked_bids;
 //extern int leaked_resultc;
+
+extern ChainedINT *CINT_pushValue(int, ChainedINT *);
+extern ChainedINT *CINT_free(ChainedINT *);
+extern int leakedBatInUse(ChainedINT *);
 
 extern int leak_init(void);
 extern char *mR_getMsg(stream *);

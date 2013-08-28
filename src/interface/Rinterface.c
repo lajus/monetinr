@@ -39,12 +39,13 @@
 
 /* ----------------------------------- Dirty Macros ----------------------------------------*/
 
-//static int *LC__;
+static ChainedINT **LB__;
 static RResultPtr *LD__;
 static void *HD__ = NULL;
 
 // Macros to access leaked_data.h global variables from the dynamic library.
 // If you access it statically, you may access not the same variables than ones edited by the MAL code.
+#define LB (((LB__ = (ChainedINT **) dlsym(HD__, "leaked_bids")) == NULL) ? ((ChainedINT **)(access_error("load leaked_bids failed"))) : LB__)
 #define LD (((LD__ = (RResultPtr *) dlsym(HD__, "leaked_data")) == NULL) ? *((RResultPtr *)(access_error("load leaked_data failed"))) : *LD__)
 static void *
 access_error(const char *msg)
@@ -53,9 +54,42 @@ access_error(const char *msg)
 	return NULL;
 }
 
+static ChainedSEXP *preserved = NULL;
+static ChainedSEXP *CSEXP_pushValue(SEXP val, ChainedSEXP *c) {
+	ChainedSEXP *r = (ChainedSEXP *) malloc(sizeof(ChainedSEXP));
+	r->val = val;
+	r->next = c;
+	return r;
+}
+static ChainedSEXP *CSEXP_free(ChainedSEXP *c) {
+	if (c != NULL) {
+		ChainedSEXP *next = c->next;
+		R_ReleaseObject(c->val);
+		free(c);
+		return CSEXP_free(next);
+	}
+	return NULL;
+}
+
+SEXP monetinR_stop(void) {
+	preserved = CSEXP_free(preserved);
+	CINT_free(*LB);
+	*LB = NULL;
+	return ScalarLogical(1);
+}
+
+SEXP monetinR_isRunning(void) {
+	return ScalarLogical(preserved != NULL);
+}
+
+SEXP monetinR_batinUse(void) {
+	return ScalarLogical(preserved != NULL && leakedBatInUse(*LB));
+}
+
 static void executeOnExit(R_CFinalizer_t finalizer, void *finalizerArg) {
 	SEXP extptr;
 	R_PreserveObject(extptr = R_MakeExternalPtr(finalizerArg, R_NilValue, R_NilValue));
+	preserved = CSEXP_pushValue(extptr, preserved);
 	R_MakeWeakRefC(extptr, R_NilValue, finalizer, TRUE);
 }
 
@@ -89,6 +123,8 @@ str monetinR_init(const char *dbpath, int debug) {
 	//char prmodpath[1024];
 	//char *modpath = NULL;
 	//char *binpath = NULL;
+
+	if(preserved != NULL) Rf_error("Only one instance of monetinR at a time. Sorry, can't do better than that.");
 
 #define N_OPTIONS	6	/*MUST MATCH # OPTIONS BELOW */
 	set = malloc(sizeof(opt) * N_OPTIONS);
