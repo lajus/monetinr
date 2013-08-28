@@ -170,12 +170,35 @@ leak_addColumn(Client cntxt, MalBlkPtr mb, MalStkPtr stk, InstrPtr pci)
 		SET_STRING_ELT(leaked_data->name, colc, mkChar(name));
 		SET_STRING_ELT(leaked_data->tname, colc, mkChar(tname));
 		colc++;
+		leaked_bids = CINT_pushValue(*bid, leaked_bids);
 	} else {
 		(void) type_length;
 		throw(MAL, "leaker.addColumn", PROGRAM_NYI);
 	}
 
 	return MAL_SUCCEED;
+}
+
+// Some macros
+
+#define SI(val) ScalarInteger((int) val )
+#define SR(val) ScalarReal((double) val )
+#define SS(val) ScalarString(mkChar((str) val ))
+
+#define SCALE_IT(val, scale) ((scale == 0) ? SI(val) : ScalarReal((double)(val) * pow(10.0, -scale)))
+#define SCALE_IT2(val, scale) ((scale == 0) ? SR(val) : ScalarReal((double)(val) * pow(10.0, -scale)))
+#define CAST_AND_ASSIGN(otype, otypearg, cast_into) { \
+	otype tmp = otypearg ; leaked_data->value = PROTECT( (cast_into) ); \
+}
+#define VV(name) (val.val.name)
+#define BATval(otype) ( *(otype *)(Tloc(b, BUNfirst(b))) )
+#define CAST_AND_ASSIGN_BAT(otype, cast_into) CAST_AND_ASSIGN(otype, BATval(otype), cast_into)
+
+#define HACK_PROTECT { \
+		leaked_data->value = PROTECT(ScalarInteger(NA_INTEGER)); \
+		leaked_data->name = PROTECT(ScalarString(mkChar("ERR"))); \
+		leaked_data->tname = PROTECT(ScalarString(mkChar("ERR"))); \
+ 		leaked_data->type = LD_ERROR; \
 }
 
 /* leakValue{unsafe}(tname:str, name:str, typename:str, digits:int, scale:int, val:any_1) :void */
@@ -187,26 +210,56 @@ leak_value(Client cntxt, MalBlkPtr mb, MalStkPtr stk, InstrPtr pci)
 	//str type = GDKstrdup(*((str*) getArgReference(stk, pci, 3)));
 	//int type_length = *((int*) getArgReference(stk, pci, 4));
 	int scale = *((int*) getArgReference(stk, pci, 5));
-	ValPtr val = & stk->stk[pci->argv[6]];
+	ValRecord val = stk->stk[pci->argv[6]];
 
 	(void) cntxt;
 	(void) mb;
 	// TODO
 
-	assert(scale == 0);
-	switch(val->vtype) {
-	case TYPE_int:
-		leaked_data->value = ScalarInteger(val->val.ival); break;
-	case TYPE_sht: { sht tmp = val->val.shval; leaked_data->value = ScalarInteger((int)tmp); } break;
-	case TYPE_lng: { lng tmp = val->val.lval; leaked_data->value = ScalarReal((double)tmp); } break;
-	case TYPE_flt: { flt tmp = val->val.fval; leaked_data->value = ScalarReal((double)tmp); } break;
-	case TYPE_dbl: leaked_data->value = ScalarReal(val->val.dval); break;
+	//assert(scale == 0); // scale is used for decimals, the value is internally stored as a not-floating point and is represented with value*10^(-scale)
+
+	switch(val.vtype) {
+	case TYPE_void: leaked_data->value = PROTECT(ScalarInteger(NA_INTEGER)); break;
+	case TYPE_bit: leaked_data->value = PROTECT(ScalarLogical(VV(ival))); break;
+	case TYPE_bte: CAST_AND_ASSIGN(bte, VV(btval), SCALE_IT(tmp, scale)) break;
+	case TYPE_wrd: CAST_AND_ASSIGN(wrd, VV(wval), SCALE_IT(tmp, scale)) break;
+	case TYPE_int: leaked_data->value = PROTECT(SCALE_IT(VV(ival), scale)); break;
+	case TYPE_oid: CAST_AND_ASSIGN(oid, VV(oval), SR(tmp)) break;
+	case TYPE_sht: CAST_AND_ASSIGN(sht, VV(shval), SCALE_IT(tmp, scale)) break;
+	case TYPE_lng: CAST_AND_ASSIGN(lng, VV(lval), SCALE_IT2(tmp, scale)) break;
+	case TYPE_flt: CAST_AND_ASSIGN(flt, VV(fval), SR(tmp)) break;
+	case TYPE_dbl: leaked_data->value = PROTECT(SR(VV(dval))); break;
+	case TYPE_str: leaked_data->value = PROTECT(SS(VV(sval))); break;
+	case TYPE_bat: { BAT *b; bat tmp = VV(bval);
+					 if((b = BATdescriptor(tmp)) == NULL) goto invalid_bid;
+					 assert(BATcount(b) == 1);
+					 switch(BATttype(b)) {
+					 	case TYPE_void: leaked_data->value = PROTECT(ScalarInteger(NA_INTEGER)); break;
+					 	case TYPE_bit: leaked_data->value = PROTECT(ScalarLogical(BATval(bit))); break;
+					 	case TYPE_bte: CAST_AND_ASSIGN_BAT(bte, SI(tmp)) break;
+					 	case TYPE_wrd: CAST_AND_ASSIGN_BAT(wrd, SI(tmp)) break;
+					 	case TYPE_int: leaked_data->value = PROTECT(SI(BATval(int))); break;
+					 	case TYPE_oid: CAST_AND_ASSIGN_BAT(oid, SR(tmp)) break;
+					 	case TYPE_sht: CAST_AND_ASSIGN_BAT(sht, SI(tmp)) break;
+					 	case TYPE_lng: CAST_AND_ASSIGN_BAT(lng, SR(tmp)) break;
+					 	case TYPE_flt: CAST_AND_ASSIGN_BAT(flt, SR(tmp)) break;
+					 	case TYPE_dbl: leaked_data->value = PROTECT(SR(BATval(double))); break;
+					 	case TYPE_str: leaked_data->value = PROTECT(SS(Tbase(b))); break;
+					 	default:
+					 		/* Hack against PROTECT imbalance */
+					 		HACK_PROTECT
+					 		throw(MAL, "leaker.leakValue", PROGRAM_NYI); break;
+					 }
+					} break;
 	default:
+		/* Hack against PROTECT imbalance */
+		invalid_bid:
+		HACK_PROTECT
 		throw(MAL, "leaker.leakValue", PROGRAM_NYI); break;
 	}
 
-	leaked_data->name = ScalarString(mkChar(name));
-	leaked_data->tname = ScalarString(mkChar(tname));
+	leaked_data->name = PROTECT(ScalarString(mkChar(name)));
+	leaked_data->tname = PROTECT(ScalarString(mkChar(tname)));
 	leaked_data->type = LD_RESULT;
 
 	return MAL_SUCCEED;
