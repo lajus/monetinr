@@ -6,6 +6,7 @@ Authors@R: c(person("Jonathan", "Lajus", role = c("aut", "cre"),
 	   email = "lajus@cwi.nl"))
 Author: Jonathan Lajus
 Maintainer: Jonathan Lajus <lajus@cwi.nl>
+Depends: DBI, MonetDB.R
 Description: A simple way to use data from a database
 	     without redondings.
 License: MonetDB Public License (1.1)
