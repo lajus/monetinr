@@ -106,8 +106,13 @@ monetinR_on_exit(SEXP ptr) { (void) ptr; GDKexit(0); }
 
 static void
 mysighandler(int sigint) {
-	system("pstack $(pgrep R) &> /export/scratch2/lajus/stack");
-	system("gcore -o /export/scratch2/lajus/core $(pgrep R)");
+	int i;
+	i  = system("pstack $(pgrep R) &> /export/scratch2/lajus/stack");
+	i += system("gcore -o /export/scratch2/lajus/core $(pgrep R)");
+	if(i) {
+	GDKfatal("SIGNAL %d (core dumped)\n", sigint);
+	abort();
+	}
 	GDKfatal("SIGNAL %d (core dumped)\n", sigint);
 	abort();
 }
