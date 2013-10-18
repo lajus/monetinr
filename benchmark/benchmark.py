@@ -115,7 +115,7 @@ def process_files():
                 if "MonetDB.R" in fi: 
                     pss.append("mserver5")
             #                pss.append("monetdb")
-                if "monetinR" in fi: R = '/export/scratch2/lajus/Rbuild/bin/R'
+            #    if "monetinR" in fi: R = '/export/scratch2/lajus/Rbuild/bin/R'
                 watchers = []
                 watchers_file = []
                 for ps in pss: 
@@ -344,8 +344,8 @@ def main():
         save_state(state)
         
     if state == 1:
-        importDataset(["src/mdb_import_*.sql"], "monetdb", options.mdbpath+'/'+wd)
-        importDataset(["src/sqlite_import_*.sql"], "sqlite", 'src/'+wd)
+        if ("MonetDB.R" in tools or "monetinR" in tools): importDataset(["src/mdb_import_*.sql"], "monetdb", options.mdbpath+'/'+wd)
+        if "RSQLite" in tools: importDataset(["src/sqlite_import_*.sql"], "sqlite", 'src/'+wd)
 
         print "Datasets imported"
         state += 1
@@ -382,7 +382,7 @@ def main():
                 grouping = map(lambda x: ra_to_absolute(x, n), options.group)
                 for col in range(1, len(options.group)+1):
                     f.write("\n-- GROUPING (%d)\n"%grouping[col-1])
-                    dquery[ftname]["group"][grouping[col-1]] = [group_query(col, ftname, f)]
+                    dquery[ftname]["group"][grouping[col-1]] = [group_query(col-1, ftname, f)]
                 f.write('\n\n')
             if (queries >> 3) % 2 is 1:
                 i = 0
