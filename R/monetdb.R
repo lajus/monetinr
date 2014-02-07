@@ -17,8 +17,8 @@ MonetinR <- function() {
 }
 
 setMethod("dbGetInfo", "MonetinRDriver", def=function(dbObj, ...)
-		list(name="MonetinDriver", 
-			driver.version="0.1.1",
+		list(name="MonetinRDriver", 
+			driver.version="0.1.2",
 			DBI.version="0.2-5",
 			client.version=NA,
 			max.connections=1)

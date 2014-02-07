@@ -1,5 +1,16 @@
 ## package has a dynamic library
 useDynLib(libR_interface)
 
-## and exported functions
-export(init, dummy, query, explain)
+## import
+import(DBI)
+
+## driver constructor
+export(MonetinR)
+exportMethods(dbSendUpdate)
+
+importFrom(MonetDB.R, monet.frame)
+importFrom(MonetDB.R, set.debug)
+export(mirf)
+
+## 
+export(init, query, stop)

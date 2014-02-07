@@ -104,11 +104,12 @@ EXITFUN_def(GDKfree)
 static void
 monetinR_on_exit(SEXP ptr) { (void) ptr; GDKexit(0); }
 
+/*
 static void
 mysighandler(int sigint) {
 	int i;
-	i  = system("pstack $(pgrep R) &> /export/scratch2/lajus/stack");
-	i += system("gcore -o /export/scratch2/lajus/core $(pgrep R)");
+	i  = system("pstack $(pgrep R) &> /home/jo/workspace/stack");
+	i += system("gcore -o /home/jo/workspace/core $(pgrep R)");
 	if(i) {
 	GDKfatal("SIGNAL %d (core dumped)\n", sigint);
 	abort();
@@ -116,6 +117,7 @@ mysighandler(int sigint) {
 	GDKfatal("SIGNAL %d (core dumped)\n", sigint);
 	abort();
 }
+*/
 
 // Based on the mserver5 main()
 str monetinR_init(const char *dbpath, int debug) {
@@ -316,6 +318,7 @@ str monetinR_init(const char *dbpath, int debug) {
 	}
 
 #ifdef HAVE_SIGACTION
+/*
 	{
 
 	struct sigaction sigIntHandler;
@@ -326,6 +329,7 @@ str monetinR_init(const char *dbpath, int debug) {
 	sigaction(SIGSEGV, &sigIntHandler, NULL);
 
 	}
+*/
 #endif
 
 //	if ((err = SQLinitClient(mal_clients)) != NULL) {

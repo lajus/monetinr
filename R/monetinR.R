@@ -7,8 +7,15 @@ dummy <- function() {
 	.Call("monetinR_dummy")
 }
 
-query <- function(q) {
+.query <- function(q) {
 	.Call("monetinR_executeQuery", q)
+}
+
+query <- function(q) {
+	req <- strsplit(q, ";")[[1]]
+	req <- paste(req, ";")
+	if (length(req) == 1) return(.query(req)) 
+	return(lapply(req, .query))
 }
 
 explain <- function(q) {
