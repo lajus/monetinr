@@ -46,7 +46,9 @@ setMethod("dbGetQuery", signature(conn="MonetinRConnection", statement="characte
 		if (DEBUG_IO)  {
 			cat("MAL plan:\n")
 			explain(statement) }
-		return(query(statement))
+		res <- query(statement)
+		if (typeof(res) != "list") return(data.frame(res))
+		return(res)
 	})
 
 # This one does all the work in this class
