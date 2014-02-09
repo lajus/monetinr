@@ -412,6 +412,7 @@ monetinR_executeQuery(SEXP q)
 		if (*msgdup) R_ShowMessage(msgdup);
 		/* TODO: Bind name and tname in attributes */
 		res = ld->value;
+		setAttrib(res, R_NamesSymbol, ld->name);
 		UNPROTECT(3);
 		return res;
 	default:

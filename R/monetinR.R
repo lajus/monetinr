@@ -8,7 +8,9 @@ dummy <- function() {
 }
 
 .query <- function(q) {
-	.Call("monetinR_executeQuery", q)
+	res <- .Call("monetinR_executeQuery", q)
+        if (typeof(res) == "list") class(res) <- "data.frame"
+        res
 }
 
 query <- function(q) {

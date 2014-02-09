@@ -2,14 +2,14 @@
 useDynLib(libR_interface)
 
 ## import
-import(DBI)
+import(DBI, MonetDB.R)
 
 ## driver constructor
 export(MonetinR)
 exportMethods(dbSendUpdate)
 
-importFrom(MonetDB.R, monet.frame)
-importFrom(MonetDB.R, set.debug)
+export(monetinr.frame, monetinrframe)
+export(adf)
 export(mirf)
 
 ## 

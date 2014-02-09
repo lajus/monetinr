@@ -36,11 +36,11 @@ monetinr.frame <- monetinrframe <- function(conn,tableOrQuery,debug=FALSE)
 	# strip away things the prepare does not like
 	coltestquery <- gsub("SELECT (.*?) FROM (.*?) (ORDER|LIMIT|OFFSET).*","SELECT \\1 FROM \\2",query,ignore.case=TRUE)
 		
-	# get column names and types from prepare response
+	# get column names and types from response
 	res <- dbGetQuery(conn, paste0(coltestquery, " LIMIT 1"))
 	attr(obj,"cnames") <- names(res)
 	attr(obj,"ncol") <- length(res)
-	attr(obj,"rtypes") <- sapply(res, typeof)
+	attr(obj,"rtypes") <- gsub("integer", "numeric", sapply(res, typeof))
 		
 	if (debug) cat(paste0("II: 'Re-Initializing column info.'\n",sep=""))	
 	
